@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Container,Jumbotron,Button,DropdownButton,Dropdown} from 'react-bootstrap'
 import './Profile.css'
 import About from './About';
+import axios from "axios"
 class Profile extends Component {
     state = { 
         profile:null,
@@ -35,21 +36,20 @@ class Profile extends Component {
 
     }
      componentDidMount = async () => {
-        const userID = this.props.match.params.userId;
-        let response = await fetch("https://striveschool.herokuapp.com/api/profile/" +userID, {
+        // const userID = this.props.match.params.userId;
+        let response = await fetch("http://localhost:3004/profile/", {
             method:"GET",
             headers:new Headers({
-                "content-type":"application/json",
-                "Authorization":"Basic dXNlcjIzOjJhazlFNXFxQkt2VjJ3a3k="
+                "Content-Type":"application/json"
             })
         })
         let details = await response.json()
-        this.setState({
-            details
-        })
+        console.log("profile",details)
+        // this.setState({
+        //     details
+        // })
 
-     }
-      
+    }   
     render() { 
         return ( 
            <div>       

@@ -13,20 +13,21 @@ class ModalUI extends Component {
        startDate:"",
        endDate:null,
     description:"",
-        area:""
+        area:"",
+        image:"image",
+        username:this.props.match.params.userId
      }
     }
 
     submitExperience =  async (e) => {
         e.preventDefault()
-        const userID = this.props.match.params.userId;
+        const username = this.props.match.params.userId;
       
-        let response = await fetch ("https://striveschool.herokuapp.com/api/profile/userName/experiences",{
+        let response = await fetch ("http://localhost:3004/profile/experience/"+username,{
             method:"POST",
             body: JSON.stringify(this.state.newexperience),
             headers:{
-                'Content-Type' : 'Application/json',
-                "Authorization":"Basic dXNlcjIzOjJhazlFNXFxQkt2VjJ3a3k="
+                'Content-Type' : 'Application/json'
             }  
         })
 

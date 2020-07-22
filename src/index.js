@@ -16,10 +16,8 @@ ReactDOM.render(
     <Router>
       <NavBar />
       <Route path='/profile/:userId' exact component={App}></Route>
-      <Route path='/home/' exact component={NewsFeedPage}></Route>
+      <Route path='/home/:username/:userId' exact component={NewsFeedPage}></Route>
       <Route path='/NetworkP' exact component= {NetworkP}></Route>
-      
-     
     </Router>
     <Footer />
   </React.StrictMode>,

@@ -6,7 +6,8 @@ class FeedPost extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: "",
+            username: this.props.match.params.username,
+            user : this.props.match.params.userId,
             data: {},
             text: "",
             updated: false,
@@ -15,12 +16,11 @@ class FeedPost extends Component {
     update = (e) => { this.setState({ text: e.target.value }) }
     async handle(e2) {
         let text = { "text": this.state.text };
-        let object = await fetch("https://striveschool.herokuapp.com/api/posts/", {
+        let object = await fetch("http://localhost:3004/post", {
             method: "POST",
             body: JSON.stringify(text),
             headers: new Headers({
-                "Content-Type": "application/json",
-                "Authorization": "Basic dXNlcjIzOjJhazlFNXFxQkt2VjJ3a3k="
+                "Content-Type": "application/json"
             })
         });
         if (object.ok) {
